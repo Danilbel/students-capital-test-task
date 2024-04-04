@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group = 'dev.danilbel'
+version = '1.0'
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'dev.danilbel.Main'
+        )
+    }
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
